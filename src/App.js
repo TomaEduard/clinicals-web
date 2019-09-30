@@ -1,33 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from './components/Home';
+import {Route,Switch} from 'react-router-dom';
+import FindPatients from './components/FindPatients';
+import PatientDetails from './components/PatientDetails';
 import CollectClinicals from './components/CollectClinicals';
 import AddPatient from './components/AddPatient';
 import AnalyzeData from './components/AnalyzeData';
+import Home from './components/Home';
 import ChartGenerator from './components/ChartGenerator';
 
-function App() {
-  return (
-    <div className="App">
-
-      <BrowserRouter>
-        <React.Fragment>
-
-          <Switch>
-
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/patientDetails/:patientId" component={CollectClinicals} />
-            <Route exact path="/analyze/:patientId" component={AnalyzeData} />
-            <Route exact path="/addPatient" component={AddPatient} />
-            <Route exact path="/chart/:componentName/:patientId" component={ChartGenerator} />
-
-          </Switch>
-        </React.Fragment>
-      </BrowserRouter>
-
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+       <Switch>
+        <Route exact path="/" component={Home}/>
+        <Route exact path="/findPatients" component={FindPatients}/>
+        <Route exact path="/patientDetails/:firstName/:lastName" component={PatientDetails}/>
+        <Route exact path="/patientDetails/:patientId" component={CollectClinicals}/>
+        <Route exact path="/addPatient" component={AddPatient}/>
+        <Route exact path="/analyze/:patientId" component={AnalyzeData}/>
+        <Route exact path="/chart/:componentName/:patientId" component={ChartGenerator}/>
+       </Switch>
+      </div>
+    );
+  }
 }
 
 export default App;

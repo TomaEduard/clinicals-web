@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -31,6 +32,7 @@ class AddPatient extends React.Component {
                     Age: <input type="text" name="age" onChange={(event=>this.age= event.target.value)}/>
                     <button onClick={this.handleSubmit.bind(this)}>Confirm</button>
                 </form>
+                <Link to={'/'}>Back to Home</Link>
             </div>
         )
     }
